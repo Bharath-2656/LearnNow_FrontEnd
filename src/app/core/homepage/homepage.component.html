@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+</head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+<body>
+    <div class="navbar">
+   
+        <!-- Navbar logo -->
+        <div class="nav-header">
+          <div class="nav-logo">
+            <a href="#">
+              <img id="logo" src="https://i.ibb.co/N25n0Qz/Screenshot-2022-05-15-103002.png" width="100px" alt="logo">
+            </a>
+          </div>
+        </div>
+         
+        <!-- responsive navbar toggle button -->
+        <input type="checkbox" id="nav-check">
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+       
+        <!-- Navbar items -->
+        <div class="nav-links">
+          <a href="#login">Login</a>
+          <a routerLink="/user/register" routerLinkActive="active">Register</a>
+          <a routerLink="/user/dashboard" routerLinkActive="active">Dashboard</a>
+          <a routerLink="/user/areaofinterest" routerLinkActive="active">Courses</a>
+          
+          <!-- <button class="loginBtn">Login</button> -->
+        </div>
+       
+      </div>
+
+
+    <div class='banner'>
+        <h3 id="logo">LearnNow!</h3>
+        <img id="firstimage" src="https://i.ibb.co/6BjHNdk/imgonline-com-ua-Replace-Color-Jqoy-A8-PHLv-AY.jpg" alt="imgonline-com-ua-Replace-Color-Jqoy-A8-PHLv-AY" border="0">     
+           <!-- <p id="sidetext">LearnNow is a new age edtech firm which focues on college students for their carrer enhancement. We offer best courses, specially currated by our team of instructors</p> -->
+    </div>
+
+    <div class='banner2 lightbluegreen'>
+        <h3 id="secondleft">Are you Industry Ready</h3><p id="questionmark">?</p>
+        
+        <p id="secondtext">Large openings are there in the digital market right now and is only expected to increase in the comming years</p>
+    </div>
+    <img id="image" src="https://i.ibb.co/YL10DrG/industry-relevant-banner.png" alt="industry-relevant-banner" border="0"> 
+
+    <div class='banner3 violet'>
+        <h3 id="thirdleft">What we offer?</h3>
+        <div class = "vertical"></div>
+        <p id="thirdtext">LearnNow is a new age edtech firm which focues on college students for their carrer enhancement. We offer best courses, specially currated by our team of instructors</p>
+    </div>
+    <div class='banner2 orange' >
+        <h3 id="fourthleft">Courses we offer</h3>   
+        <button id="slideRight" type="button"><strong>></strong></button>
+        <button id="slideLeft" type="button"><strong><</strong></button>
+        <br>
+        <div class="row" id="row">
+            
+            <ng-container *ngFor="let areaOfInterest of areaOfInterests">
+            <div class="column">
+                <div class="card">
+                    <!-- <img src="https://i.ibb.co/0MTN4KN/web-devolpment.jpg" alt="web-devolpment"> -->
+                    <img src={{areaOfInterest.imagesrc}} alt="web-devolpment" class="img" style="width:100%">
+                    <div class="container">
+                        <h3><b><a id="b" [routerLink]="['/user/category', areaOfInterest.routerlink]" routerLinkActive="active">{{areaOfInterest.name}}</a></b></h3>
+                        <!-- <p></p>  -->
+                    </div>
+                </div>
+            </div>
+           
+        </ng-container>
+        </div>
+       
+        
+</div>
+<div id="login" class='banner violet'>
+    <p id="fifthleft">Are you a Student or an instructor</p>
+    <button class="buttonalign" id="loginbutton" (click)="loginstudent()" value="Student Login">Student Login</button>
+    <button id="loginbutton2" (click)="logininstructor()" value="Instructor Login"><a href="#"></a>Instructor Login</button>
+</div>
+</body>
+</html>
+<app-footer></app-footer>  
