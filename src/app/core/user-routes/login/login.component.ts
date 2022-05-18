@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { CookieService } from 'ngx-cookie-service';
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
      private cookieService:CookieService,
      private router : Router,
      private toastr: ToastrService,
+     private authService: SocialAuthService,
       ) { }
   serverErrorMessages!: string;
 
@@ -28,9 +30,13 @@ export class LoginComponent implements OnInit {
       console.log("google");
       
       this.userService.googlelogin().subscribe((res) =>{
+      
 
       });
     }
+    // signInWithGoogle(): any {
+    //   this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    // }
 
     
     onSubmit(formOne : NgForm){
