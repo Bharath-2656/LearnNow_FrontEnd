@@ -45,12 +45,16 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
+  setRefreshToken(refreshtoken: string)
+  {
+    this.cookieService.set('refreshtoken', refreshtoken);
+  }
+
   postRefreshtokencheck(userid: Number)
   {   
-    console.log("token needed");
-    console.log(userid);
-    
-    return this.http.post(this.url + 'token' + `/${userid}`,this.noAuthHeader);
+  
+    const refreshtoken = this.cookieService.get('refreshtoken');
+    return this.http.post(this.url + 'token' + `/${userid}` + `/${refreshtoken}`, this.noAuthHeader);
   }
 
   getToken() {
@@ -62,7 +66,6 @@ export class UserService {
      
       userid = Number(this.cookieService.get('userid'));
       localStorage.removeItem('token');
-      console.log(userid);
       
     return this.http.post(this.url + 'deletetoken'+ `/${userid}`, this.noAuthHeader);
   }
@@ -96,14 +99,9 @@ export class UserService {
   postUserCourse(courseid: String, userid: Number){
  
     var price = Number(this.cookieService.get('price'))/100;
-    console.log(price);
-    
     return this.http.put(this.url + 'usercourse' + `/${userid}` + `/${courseid}` + `/${price}`,courseid);
   }
-  // postAreaOfIntrestForUser(userid: Number, areaofintrest: String)
-  // {   
-  //   return this.http.put(this.url + 'usercoursearea' + `/${userid}`+`/${areaofintrest}`, areaofintrest)
-  // }
+ 
   getUsercourse()
   {
     return this.http.get(this.url + 'usercourse');
